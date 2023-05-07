@@ -1,0 +1,98 @@
+
+
+/* GENERALES */
+
+body {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header {
+    text-align: center;
+    margin: 2rem auto 6rem auto;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+
+    margin: auto 2rem;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+p {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* FORMULARIOS */
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    
+}
+
+.form-presupuesto {
+    background-color: #e6fffa;
+    border: 2px solid green;
+    padding: .5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.form-presupuesto input {
+    background-color: #e6fffa;
+}
+
+.form-gastos {
+    background-color: #f8d7da;
+    border: 2px solid red;
+    padding: .5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+.form-gastos input {
+    background-color: #f8d7da;
+}
+
+/* TABLA */
+
+.container-table {
+    width: 100%;
+    margin-left: 2rem;
+}
+
+.subcontainer1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+}
+
+.subcontainer2-titulo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+.subcontainer-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.8);
+}
+
+.subcontainer2-titulo h3 {
+    font-weight: 600;
+}
+
+.bi-trash-fill {
+    color: royalblue;
+    cursor: pointer;
+}
