@@ -44,7 +44,7 @@ btnGastos.addEventListener("click", () => {
   let nombreGasto = document.querySelector('#nombre-gastos').value;
   let valorGastos = document.querySelector('#cantidad-gastos').value;
   let saldoDisponible = presupuesto - totalGastos;
-  if (saldoDisponible >= valorGastos){
+  if (saldoDisponible >= valorGastos && valorGastos.length > 0 && !isNaN(valorGastos)){
     let Gasto = getGastoObj(nombreGasto, valorGastos);
     addTabla(Gasto);
 
@@ -57,7 +57,7 @@ btnGastos.addEventListener("click", () => {
     arrayGastos.push(Gasto);
     saldoTotal()
     }else{ 
-      alert('No tienes saldo suficiente')
+      alert('No tienes saldo suficiente o ingresa un valor válido')
       }
 });
 
@@ -66,12 +66,17 @@ const btnPresupuesto = document.querySelector('.btn-presupuesto');
 btnPresupuesto.addEventListener("click", () => {
   let valorPresupuesto = parseInt(document.querySelector('#presupuesto').value);
   let presupuestoTabla = document.querySelector("#presupuesto-tabla");
-    
-  presupuestoTabla.innerHTML="";
-  presupuestoTabla.innerHTML=`$${valorPresupuesto}`;
-  document.querySelector("#presupuesto").value = "";
-  presupuesto = valorPresupuesto;
-  console.log(presupuesto);
+  let saldoTabla = document.querySelector("#saldo-tabla");
+  if (valorPresupuesto >= totalGastos && !isNaN(valorPresupuesto)){
+    presupuestoTabla.innerHTML="";
+    presupuestoTabla.innerHTML=`$${valorPresupuesto}`;
+    saldoTabla.innerHTML=`$${valorPresupuesto}`;
+    document.querySelector("#presupuesto").value = "";
+    presupuesto = valorPresupuesto;
+    saldoTotal();
+  } else {
+    alert('No puedes tener menos saldo que tus gastos, o ingresa un valor válido')
+  }
 });
 
 
@@ -91,8 +96,17 @@ const eliminar = (id) => {
 }
 
 
-saldoTotal = () => {
+/* saldoTotal = () => {
   let saldo = presupuesto - totalGastos;
+  let saldoTabla = document.querySelector("#saldo-tabla");
+    saldoTabla.innerHTML = `$${saldo}`;
+} */
+
+saldoTotal = () => {
+  let saldo = presupuesto;
+  for (let i = 0; i < arrayGastos.length; i++) {
+    saldo -= arrayGastos[i].valor;
+  }
   let saldoTabla = document.querySelector("#saldo-tabla");
   saldoTabla.innerHTML = `$${saldo}`;
 }
